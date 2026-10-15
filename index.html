@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engagement Invitation | Uvan & Monika</title>
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="You're Invited! Uvan & Monika's Engagement">
+    <meta name="description" content="Join us in celebrating our special day on Monday, 16th November, 2026 at DR SJ Mahal, Ulundurpet Toll. We eagerly expect your arrival!">
+    <meta name="theme-color" content="#1a050a">
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="You're Invited! Uvan & Monika's Engagement">
+    <meta property="og:description" content="Join us in celebrating our special day on Monday, 16th November, 2026 at DR SJ Mahal, Ulundurpet Toll. Click to view our invitation!">
+    <meta property="og:image" content="https://placehold.co/1200x630/1a050a/d4af37?font=Playfair+Display&text=Uvan+%26+Monika%0AEngagement">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="You're Invited! Uvan & Monika's Engagement">
+    <meta property="twitter:description" content="Join us in celebrating our special day on Monday, 16th November, 2026 at DR SJ Mahal, Ulundurpet Toll. Click to view our invitation!">
+    <meta property="twitter:image" content="https://placehold.co/1200x630/1a050a/d4af37?font=Playfair+Display&text=Uvan+%26+Monika%0AEngagement">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        :root {
+            --bg-color: #1a050a;
+            --card-bg: rgba(46, 9, 20, 0.7);
+            --gold-light: #fbe5b5;
+            --gold-mid: #d4af37;
+            --gold-dark: #aa7c11;
+        }
+
+        body {
+            margin: 0;
+            overflow-x: hidden;
+            background-color: var(--bg-color);
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+            background-image: radial-gradient(circle at center, #2e0814 0%, #1a050a 100%);
+        }
+
+        .font-display { font-family: 'Playfair Display', serif; }
+        .font-script { font-family: 'Great Vibes', cursive; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-mid), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+
+        .card-border {
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(212, 175, 55, 0.05);
+            position: relative;
+        }
+        
+        .card-border::before {
+            content: '';
+            position: absolute;
+            inset: 8px;
+            border: 1px dashed rgba(212, 175, 55, 0.4);
+            border-radius: inherit;
+            pointer-events: none;
+        }
+
+        @keyframes drawPath {
+            to { stroke-dashoffset: 0; }
+        }
+
+        @keyframes fillOpacity {
+            from { fill-opacity: 0; }
+            to { fill-opacity: 0.15; }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            15% { transform: scale(1.15); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.15); }
+        }
+
+        @keyframes letterWave {
+            0%, 100% { transform: translateY(0) scale(1); text-shadow: 0 0 5px rgba(212,175,55,0.2); color: var(--gold-mid); }
+            50% { transform: translateY(-12px) scale(1.1); text-shadow: 0 0 25px rgba(251,229,181,1); color: #ffffff; }
+        }
+
+        .dynamic-letter {
+            display: inline-block;
+            color: var(--gold-mid);
+            transition: transform 0.3s ease;
+        }
+
+        .dynamic-letter.waving {
+            animation: letterWave 3s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 15px rgba(212,175,55,0.3); }
+            50% { box-shadow: 0 0 35px rgba(251,229,181,0.7); }
+        }
+
+        .animate-float-img {
+            animation: float 6s ease-in-out infinite, pulseGlow 4s infinite;
+        }
+
+        .animate-float-img-delayed {
+            animation: float 6s ease-in-out infinite 2s, pulseGlow 4s infinite 2s;
+        }
+
+        .animate-heartbeat {
+            animation: heartbeat 2s ease-in-out infinite;
+        }
+
+        @keyframes morphBlob {
+            0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+            100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+        }
+
+        @keyframes spinGradient {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .animated-portrait-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 8px;
+            z-index: 10;
+        }
+
+        .animated-portrait-bg {
+            position: absolute;
+            inset: 0;
+            background: conic-gradient(from 0deg, var(--gold-light), var(--gold-dark), #2e0814, var(--gold-mid), var(--gold-light));
+            animation: spinGradient 8s linear infinite, morphBlob 6s ease-in-out infinite;
+            z-index: -1;
+            filter: blur(4px);
+            opacity: 0.9;
+        }
+
+        .animated-portrait-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            animation: morphBlob 6s ease-in-out infinite;
+            border: 3px solid rgba(251,229,181,0.6);
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        .animate-draw {
+            stroke-dasharray: 800;
+            stroke-dashoffset: 800;
+            animation: drawPath 4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .animate-fill {
+            animation: fillOpacity 3s ease-in forwards;
+            animation-delay: 3s;
+            fill-opacity: 0;
+        }
+
+        .fade-up {
+            opacity: 0;
+            animation: fadeUp 1.2s ease-out forwards;
+        }
+
+        .delay-1 { animation-delay: 0.3s; }
+        .delay-2 { animation-delay: 0.6s; }
+        .delay-3 { animation-delay: 0.9s; }
+        .delay-4 { animation-delay: 1.2s; }
+        .delay-5 { animation-delay: 1.5s; }
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        #toast {
+            position: fixed;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--gold-mid), var(--gold-dark));
+            color: #1a050a;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 50;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+        #toast.show { bottom: 30px; }
+    </style>
+</head>
+<body class="antialiased min-h-screen relative flex items-center justify-center py-12">
+
+    <canvas id="magic-canvas"></canvas>
+
+    <main class="relative z-10 w-full max-w-3xl px-4 sm:px-6">
+        
+        <!-- Main Invitation Card -->
+        <div class="card-border bg-[#2e0814]/80 backdrop-blur-md rounded-2xl p-8 sm:p-12 md:p-16 text-center">
+            
+            <div class="flex flex-col items-center justify-center mt-4 mb-12 relative z-10">
+                <p class="fade-up text-xs sm:text-sm tracking-[0.3em] uppercase text-[#fbe5b5] mb-12 opacity-80">
+                    Join us in celebrating the engagement of
+                </p>
+
+                <div class="fade-up delay-1 flex flex-col items-center justify-center gap-4 w-full">
+                    <h1 class="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-tight split-text cursor-default">
+                        Uvan
+                    </h1>
+                    
+                    <div class="my-8 relative animate-heartbeat flex justify-center items-center">
+                        <span class="font-script text-5xl sm:text-6xl text-[#d4af37] relative z-10">&</span>
+                        <div class="absolute w-16 h-16 bg-[#1a050a] rounded-full border border-[#d4af37]/30 shadow-[0_0_30px_rgba(212,175,55,0.4)]"></div>
+                    </div>
+
+                    <h1 class="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-tight split-text cursor-default">
+                        Monika
+                    </h1>
+                </div>
+            </div>
+
+            <div class="fade-up delay-2 flex flex-col md:flex-row justify-center items-center gap-8 md:gap-12 border-t border-b border-[#d4af37]/30 py-8 my-8 relative">
+                <div class="text-center md:w-1/2">
+                    <svg class="w-6 h-6 mx-auto mb-3 text-[#d4af37]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    <p class="text-xs uppercase tracking-widest text-[#fbe5b5] mb-2 opacity-80">When</p>
+                    <p class="font-display text-xl sm:text-2xl text-white">Monday</p>
+                    <p class="text-base sm:text-lg text-gray-200 mt-1">16th November, 2026</p>
+                    <p class="text-sm text-[#d4af37] mt-1 font-medium">Starts at 1:00 PM</p>
+                </div>
+                
+                <!-- Divider -->
+                <div class="hidden md:block w-px h-24 bg-gradient-to-b from-transparent via-[#d4af37] to-transparent opacity-40"></div>
+                
+                <div class="text-center md:w-1/2">
+                    <svg class="w-6 h-6 mx-auto mb-3 text-[#d4af37]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    <p class="text-xs uppercase tracking-widest text-[#fbe5b5] mb-2 opacity-80">Where</p>
+                    <p class="font-display text-xl sm:text-2xl text-white">DR SJ Mahal</p>
+                    <p class="text-base sm:text-lg text-gray-200 mt-1">Ulundurpet Toll</p>
+                    <p class="text-sm text-[#d4af37] mt-1 font-medium">Tamil Nadu</p>
+                    <a href="https://maps.google.com/?cid=2725215643195573389" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 mt-4 px-4 py-2 rounded-full border border-[#d4af37]/50 text-[#fbe5b5] text-xs uppercase tracking-widest hover:bg-[#d4af37]/20 transition-all duration-300 hover:shadow-[0_0_10px_rgba(212,175,55,0.3)]">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
+                        Get Directions
+                    </a>
+                </div>
+            </div>
+
+            <div class="fade-up delay-3 mt-10">
+                <p class="text-xs sm:text-sm uppercase tracking-[0.2em] text-[#fbe5b5] mb-6 opacity-90">Awaiting the moment in</p>
+                
+                <div id="countdown" class="flex justify-center gap-3 sm:gap-6 font-display text-2xl sm:text-3xl md:text-4xl text-white">
+                    <div class="bg-[#1a050a]/50 border border-[#d4af37]/20 rounded-lg p-3 sm:p-4 min-w-[70px] sm:min-w-[90px] shadow-lg">
+                        <div id="days" class="text-gradient font-bold">00</div>
+                        <div class="text-[10px] sm:text-xs font-sans tracking-widest uppercase text-gray-400 mt-2">Days</div>
+                    </div>
+                    <div class="flex items-center text-[#d4af37]/50 pb-6">:</div>
+                    <div class="bg-[#1a050a]/50 border border-[#d4af37]/20 rounded-lg p-3 sm:p-4 min-w-[70px] sm:min-w-[90px] shadow-lg">
+                        <div id="hours" class="text-gradient font-bold">00</div>
+                        <div class="text-[10px] sm:text-xs font-sans tracking-widest uppercase text-gray-400 mt-2">Hours</div>
+                    </div>
+                    <div class="flex items-center text-[#d4af37]/50 pb-6">:</div>
+                    <div class="bg-[#1a050a]/50 border border-[#d4af37]/20 rounded-lg p-3 sm:p-4 min-w-[70px] sm:min-w-[90px] shadow-lg">
+                        <div id="minutes" class="text-gradient font-bold">00</div>
+                        <div class="text-[10px] sm:text-xs font-sans tracking-widest uppercase text-gray-400 mt-2">Mins</div>
+                    </div>
+                    <div class="flex items-center text-[#d4af37]/50 pb-6">:</div>
+                    <div class="bg-[#1a050a]/50 border border-[#d4af37]/20 rounded-lg p-3 sm:p-4 min-w-[70px] sm:min-w-[90px] shadow-lg">
+                        <div id="seconds" class="text-gradient font-bold">00</div>
+                        <div class="text-[10px] sm:text-xs font-sans tracking-widest uppercase text-gray-400 mt-2">Secs</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="fade-up delay-4 mt-10 text-center px-4 relative z-10">
+                <p class="font-script text-3xl sm:text-4xl text-[#d4af37] mb-3 drop-shadow-md">It is our greatest pleasure to have your wishes...</p>
+                <p class="text-sm sm:text-base text-gray-200 font-light tracking-wide">...and we are eagerly expecting your arrival to share in our joy.</p>
+            </div>
+
+            <div class="fade-up delay-5 mt-10">
+                 <button onclick="handleRSVP()" class="group relative px-10 py-4 overflow-hidden rounded-full bg-gradient-to-r from-[#d4af37] via-[#fbe5b5] to-[#d4af37] text-[#1a050a] font-semibold transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(212,175,55,0.4)]">
+                    <span class="relative z-10 text-sm tracking-[0.15em] uppercase font-bold">Confirm Attendance</span>
+                    <div class="absolute inset-0 h-full w-full bg-white/20 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-in-out"></div>
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Interactive Custom Toast Message -->
+    <div id="toast">✨ Thank you! We can't wait to celebrate with you. ✨</div>
+
+    <script>
+        // 1. Golden Glowing Dust Particles (Canvas)
+        const canvas = document.getElementById('magic-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Sparkle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedY = -(Math.random() * 0.5 + 0.2); // Float up
+                this.speedX = (Math.random() - 0.5) * 0.4;
+                this.opacity = Math.random();
+                this.fadeSpeed = Math.random() * 0.02 + 0.005;
+                this.fadingOut = Math.random() > 0.5;
+                // Gold variations
+                const colors = ['#fbe5b5', '#d4af37', '#ffffff'];
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+            }
+            
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+                
+                // Pulsing glow effect
+                if (this.fadingOut) {
+                    this.opacity -= this.fadeSpeed;
+                    if (this.opacity <= 0.1) this.fadingOut = false;
+                } else {
+                    this.opacity += this.fadeSpeed;
+                    if (this.opacity >= 0.8) this.fadingOut = true;
+                }
+
+                // Reset at bottom if moves off top
+                if (this.y < -10) {
+                    this.y = canvas.height + 10;
+                    this.x = Math.random() * canvas.width;
+                }
+            }
+            
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.globalAlpha = this.opacity;
+                
+                // Add a little glow
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = this.color;
+                
+                ctx.fill();
+                
+                // Reset shadow to avoid performance hit on everything
+                ctx.shadowBlur = 0;
+            }
+        }
+
+        function initParticles() {
+            // Responsive amount based on screen width
+            const particleCount = Math.min(Math.floor(window.innerWidth / 8), 150); 
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Sparkle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+
+        initParticles();
+        animateParticles();
+
+        // 2. Countdown Timer
+        // Target: November 16, 2026, 13:00:00 (1 PM)
+        const eventDate = new Date("November 16, 2026 13:00:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            if (distance < 0) {
+                document.getElementById("countdown").innerHTML = "<div class='text-gradient text-2xl md:text-4xl font-display font-bold py-4'>The Celebration Has Begun!</div>";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // 4. Dynamic Letter Transition
+        document.querySelectorAll('.split-text').forEach(el => {
+            const text = el.innerText.trim();
+            el.innerHTML = '';
+            text.split('').forEach((char, i) => {
+                const span = document.createElement('span');
+                span.innerText = char === ' ' ? '\u00A0' : char;
+                span.className = 'dynamic-letter';
+                // Add staggered animation delay based on index for the wave effect
+                span.style.animationDelay = `${i * 0.15}s`;
+                if (char !== ' ') {
+                    span.classList.add('waving');
+                }
+                el.appendChild(span);
+            });
+        });
+
+        // 3. Custom RSVP Message Box (No alerts allowed)
+        function handleRSVP() {
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            
+            // Hide after 4 seconds
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
