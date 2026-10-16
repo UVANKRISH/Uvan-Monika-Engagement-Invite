@@ -26,7 +26,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
@@ -73,15 +73,6 @@
             pointer-events: none;
         }
 
-        @keyframes drawPath {
-            to { stroke-dashoffset: 0; }
-        }
-
-        @keyframes fillOpacity {
-            from { fill-opacity: 0; }
-            to { fill-opacity: 0.15; }
-        }
-
         @keyframes float {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-10px); }
@@ -124,63 +115,8 @@
             animation: float 6s ease-in-out infinite, pulseGlow 4s infinite;
         }
 
-        .animate-float-img-delayed {
-            animation: float 6s ease-in-out infinite 2s, pulseGlow 4s infinite 2s;
-        }
-
         .animate-heartbeat {
             animation: heartbeat 2s ease-in-out infinite;
-        }
-
-        @keyframes morphBlob {
-            0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
-            100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-        }
-
-        @keyframes spinGradient {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .animated-portrait-container {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 8px;
-            z-index: 10;
-        }
-
-        .animated-portrait-bg {
-            position: absolute;
-            inset: 0;
-            background: conic-gradient(from 0deg, var(--gold-light), var(--gold-dark), #2e0814, var(--gold-mid), var(--gold-light));
-            animation: spinGradient 8s linear infinite, morphBlob 6s ease-in-out infinite;
-            z-index: -1;
-            filter: blur(4px);
-            opacity: 0.9;
-        }
-
-        .animated-portrait-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            animation: morphBlob 6s ease-in-out infinite;
-            border: 3px solid rgba(251,229,181,0.6);
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
-        }
-
-        .animate-draw {
-            stroke-dasharray: 800;
-            stroke-dashoffset: 800;
-            animation: drawPath 4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-        }
-
-        .animate-fill {
-            animation: fillOpacity 3s ease-in forwards;
-            animation-delay: 3s;
-            fill-opacity: 0;
         }
 
         .fade-up {
@@ -194,7 +130,7 @@
         .delay-4 { animation-delay: 1.2s; }
         .delay-5 { animation-delay: 1.5s; }
 
-        canvas {
+        canvas#magic-canvas {
             position: fixed;
             top: 0;
             left: 0;
@@ -202,6 +138,10 @@
             height: 100vh;
             z-index: 0;
             pointer-events: none;
+        }
+
+        #scratch-container {
+            touch-action: none; /* Prevents scrolling while scratching on mobile */
         }
 
         #toast {
@@ -225,43 +165,67 @@
 
     <canvas id="magic-canvas"></canvas>
 
-    <main class="relative z-10 w-full max-w-3xl px-4 sm:px-6">
+    <main class="relative z-10 w-full max-w-4xl px-4 sm:px-6">
         
         <!-- Main Invitation Card -->
         <div class="card-border bg-[#2e0814]/80 backdrop-blur-md rounded-2xl p-8 sm:p-12 md:p-16 text-center">
-            
+
+            <!-- Horizontal Names & Portraits Layout -->
             <div class="flex flex-col items-center justify-center mt-4 mb-12 relative z-10">
-                <p class="fade-up text-xs sm:text-sm tracking-[0.3em] uppercase text-[#fbe5b5] mb-12 opacity-80">
+                <p class="fade-up text-xs sm:text-sm tracking-[0.3em] uppercase text-[#fbe5b5] mb-12 opacity-80 text-center">
                     Join us in celebrating the engagement of
                 </p>
 
-                <div class="fade-up delay-1 flex flex-col items-center justify-center gap-4 w-full">
-                    <h1 class="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-tight split-text cursor-default">
-                        Uvan
-                    </h1>
+                <div class="fade-up delay-1 flex flex-row items-center justify-center gap-4 sm:gap-12 w-full">
                     
-                    <div class="my-8 relative animate-heartbeat flex justify-center items-center">
-                        <span class="font-script text-5xl sm:text-6xl text-[#d4af37] relative z-10">&</span>
-                        <div class="absolute w-16 h-16 bg-[#1a050a] rounded-full border border-[#d4af37]/30 shadow-[0_0_30px_rgba(212,175,55,0.4)]"></div>
+                    <!-- Groom Side (Left) -->
+                    <div class="flex flex-col items-center">
+                        <div class="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-[3px] border-[#d4af37] shadow-[0_0_20px_rgba(212,175,55,0.4)] mb-6 animate-float-img relative">
+                            <!-- CSS magic isolates Uvan's face from the single combined image -->
+                            <img src="WhatsApp Image 2026-10-16 at 2.45.55 PM.jpeg" alt="Uvan" class="absolute inset-0 w-full h-full object-cover" style="object-position: 70% 12%; transform: scale(2.5); transform-origin: 70% 12%;">
+                        </div>
+                        <h1 class="font-display text-3xl sm:text-5xl md:text-6xl font-bold leading-tight split-text cursor-default">
+                            Uvan
+                        </h1>
+                    </div>
+                    
+                    <!-- Ampersand -->
+                    <div class="relative animate-heartbeat flex justify-center items-center mt-8 sm:mt-12 px-2">
+                        <span class="font-script text-3xl sm:text-5xl md:text-6xl text-[#d4af37] relative z-10">&</span>
                     </div>
 
-                    <h1 class="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-tight split-text cursor-default">
-                        Monika
-                    </h1>
+                    <!-- Bride Side (Right) -->
+                    <div class="flex flex-col items-center">
+                        <div class="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-[3px] border-[#d4af37] shadow-[0_0_20px_rgba(212,175,55,0.4)] mb-6 animate-float-img" style="animation-delay: 1.5s;">
+                            <!-- CSS magic isolates Monika's face from the single combined image -->
+                            <img src="WhatsApp Image 2026-10-16 at 2.45.55 PM.jpeg" alt="Monika" class="absolute inset-0 w-full h-full object-cover" style="object-position: 32% 16%; transform: scale(2.5); transform-origin: 32% 16%;">
+                        </div>
+                        <h1 class="font-display text-3xl sm:text-5xl md:text-6xl font-bold leading-tight split-text cursor-default">
+                            Monika
+                        </h1>
+                    </div>
+
                 </div>
             </div>
 
             <div class="fade-up delay-2 flex flex-col md:flex-row justify-center items-center gap-8 md:gap-12 border-t border-b border-[#d4af37]/30 py-8 my-8 relative">
-                <div class="text-center md:w-1/2">
+                <div class="text-center md:w-1/2 flex flex-col items-center">
                     <svg class="w-6 h-6 mx-auto mb-3 text-[#d4af37]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                     <p class="text-xs uppercase tracking-widest text-[#fbe5b5] mb-2 opacity-80">When</p>
-                    <p class="font-display text-xl sm:text-2xl text-white">Monday</p>
-                    <p class="text-base sm:text-lg text-gray-200 mt-1">16th November, 2026</p>
-                    <p class="text-sm text-[#d4af37] mt-1 font-medium">Starts at 1:00 PM</p>
+                    
+                    <!-- Large Scratch Card Container for Day, Date, and Time -->
+                    <div id="scratch-container" class="relative w-[240px] h-[130px] mt-2 rounded-lg overflow-hidden border border-[#d4af37]/50 shadow-lg cursor-pointer">
+                        <div class="absolute inset-0 flex flex-col items-center justify-center bg-[#1a050a] z-0 p-2">
+                            <p class="font-display text-xl sm:text-2xl text-white">Monday</p>
+                            <p class="text-base sm:text-lg text-white font-semibold tracking-wider mt-1">16 Nov, 2026</p>
+                            <p class="text-sm text-[#d4af37] mt-2 font-medium">Starts at 1:00 PM</p>
+                        </div>
+                        <canvas id="scratch-canvas" width="240" height="130" class="absolute inset-0 z-10 rounded-lg"></canvas>
+                    </div>
                 </div>
                 
                 <!-- Divider -->
-                <div class="hidden md:block w-px h-24 bg-gradient-to-b from-transparent via-[#d4af37] to-transparent opacity-40"></div>
+                <div class="hidden md:block w-px h-32 bg-gradient-to-b from-transparent via-[#d4af37] to-transparent opacity-40"></div>
                 
                 <div class="text-center md:w-1/2">
                     <svg class="w-6 h-6 mx-auto mb-3 text-[#d4af37]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
@@ -279,23 +243,23 @@
             <div class="fade-up delay-3 mt-10">
                 <p class="text-xs sm:text-sm uppercase tracking-[0.2em] text-[#fbe5b5] mb-6 opacity-90">Awaiting the moment in</p>
                 
-                <div id="countdown" class="flex justify-center gap-3 sm:gap-6 font-display text-2xl sm:text-3xl md:text-4xl text-white">
-                    <div class="bg-[#1a050a]/50 border border-[#d4af37]/20 rounded-lg p-3 sm:p-4 min-w-[70px] sm:min-w-[90px] shadow-lg">
+                <div id="countdown" class="flex justify-center gap-2 sm:gap-6 font-display text-2xl sm:text-3xl md:text-4xl text-white">
+                    <div class="bg-[#1a050a]/50 border border-[#d4af37]/20 rounded-lg p-2 sm:p-4 min-w-[65px] sm:min-w-[90px] shadow-lg">
                         <div id="days" class="text-gradient font-bold">00</div>
                         <div class="text-[10px] sm:text-xs font-sans tracking-widest uppercase text-gray-400 mt-2">Days</div>
                     </div>
                     <div class="flex items-center text-[#d4af37]/50 pb-6">:</div>
-                    <div class="bg-[#1a050a]/50 border border-[#d4af37]/20 rounded-lg p-3 sm:p-4 min-w-[70px] sm:min-w-[90px] shadow-lg">
+                    <div class="bg-[#1a050a]/50 border border-[#d4af37]/20 rounded-lg p-2 sm:p-4 min-w-[65px] sm:min-w-[90px] shadow-lg">
                         <div id="hours" class="text-gradient font-bold">00</div>
                         <div class="text-[10px] sm:text-xs font-sans tracking-widest uppercase text-gray-400 mt-2">Hours</div>
                     </div>
                     <div class="flex items-center text-[#d4af37]/50 pb-6">:</div>
-                    <div class="bg-[#1a050a]/50 border border-[#d4af37]/20 rounded-lg p-3 sm:p-4 min-w-[70px] sm:min-w-[90px] shadow-lg">
+                    <div class="bg-[#1a050a]/50 border border-[#d4af37]/20 rounded-lg p-2 sm:p-4 min-w-[65px] sm:min-w-[90px] shadow-lg">
                         <div id="minutes" class="text-gradient font-bold">00</div>
                         <div class="text-[10px] sm:text-xs font-sans tracking-widest uppercase text-gray-400 mt-2">Mins</div>
                     </div>
                     <div class="flex items-center text-[#d4af37]/50 pb-6">:</div>
-                    <div class="bg-[#1a050a]/50 border border-[#d4af37]/20 rounded-lg p-3 sm:p-4 min-w-[70px] sm:min-w-[90px] shadow-lg">
+                    <div class="bg-[#1a050a]/50 border border-[#d4af37]/20 rounded-lg p-2 sm:p-4 min-w-[65px] sm:min-w-[90px] shadow-lg">
                         <div id="seconds" class="text-gradient font-bold">00</div>
                         <div class="text-[10px] sm:text-xs font-sans tracking-widest uppercase text-gray-400 mt-2">Secs</div>
                     </div>
@@ -339,12 +303,11 @@
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
                 this.size = Math.random() * 2 + 0.5;
-                this.speedY = -(Math.random() * 0.5 + 0.2); // Float up
+                this.speedY = -(Math.random() * 0.5 + 0.2);
                 this.speedX = (Math.random() - 0.5) * 0.4;
                 this.opacity = Math.random();
                 this.fadeSpeed = Math.random() * 0.02 + 0.005;
                 this.fadingOut = Math.random() > 0.5;
-                // Gold variations
                 const colors = ['#fbe5b5', '#d4af37', '#ffffff'];
                 this.color = colors[Math.floor(Math.random() * colors.length)];
             }
@@ -353,7 +316,6 @@
                 this.y += this.speedY;
                 this.x += this.speedX;
                 
-                // Pulsing glow effect
                 if (this.fadingOut) {
                     this.opacity -= this.fadeSpeed;
                     if (this.opacity <= 0.1) this.fadingOut = false;
@@ -362,7 +324,6 @@
                     if (this.opacity >= 0.8) this.fadingOut = true;
                 }
 
-                // Reset at bottom if moves off top
                 if (this.y < -10) {
                     this.y = canvas.height + 10;
                     this.x = Math.random() * canvas.width;
@@ -374,20 +335,14 @@
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fillStyle = this.color;
                 ctx.globalAlpha = this.opacity;
-                
-                // Add a little glow
                 ctx.shadowBlur = 10;
                 ctx.shadowColor = this.color;
-                
                 ctx.fill();
-                
-                // Reset shadow to avoid performance hit on everything
                 ctx.shadowBlur = 0;
             }
         }
 
         function initParticles() {
-            // Responsive amount based on screen width
             const particleCount = Math.min(Math.floor(window.innerWidth / 8), 150); 
             for (let i = 0; i < particleCount; i++) {
                 particles.push(new Sparkle());
@@ -407,7 +362,6 @@
         animateParticles();
 
         // 2. Countdown Timer
-        // Target: November 16, 2026, 13:00:00 (1 PM)
         const eventDate = new Date("November 16, 2026 13:00:00").getTime();
 
         function updateCountdown() {
@@ -433,7 +387,7 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // 4. Dynamic Letter Transition
+        // 3. Dynamic Letter Transition
         document.querySelectorAll('.split-text').forEach(el => {
             const text = el.innerText.trim();
             el.innerHTML = '';
@@ -441,7 +395,6 @@
                 const span = document.createElement('span');
                 span.innerText = char === ' ' ? '\u00A0' : char;
                 span.className = 'dynamic-letter';
-                // Add staggered animation delay based on index for the wave effect
                 span.style.animationDelay = `${i * 0.15}s`;
                 if (char !== ' ') {
                     span.classList.add('waving');
@@ -450,16 +403,80 @@
             });
         });
 
-        // 3. Custom RSVP Message Box (No alerts allowed)
+        // 4. Custom RSVP Message Box
         function handleRSVP() {
             const toast = document.getElementById('toast');
             toast.classList.add('show');
-            
-            // Hide after 4 seconds
             setTimeout(() => {
                 toast.classList.remove('show');
             }, 4000);
         }
+
+        // 5. Scratch Card Logic
+        const scratchCanvas = document.getElementById('scratch-canvas');
+        const sCtx = scratchCanvas.getContext('2d');
+        let isDrawing = false;
+
+        function initScratchCard() {
+            // Fill with gold foil background
+            const gradient = sCtx.createLinearGradient(0, 0, scratchCanvas.width, scratchCanvas.height);
+            gradient.addColorStop(0, '#d4af37');
+            gradient.addColorStop(0.5, '#fbe5b5');
+            gradient.addColorStop(1, '#aa7c11');
+            sCtx.fillStyle = gradient;
+            sCtx.fillRect(0, 0, scratchCanvas.width, scratchCanvas.height);
+
+            // Add text instructions
+            sCtx.font = "16px Poppins";
+            sCtx.fillStyle = "#1a050a";
+            sCtx.textAlign = "center";
+            sCtx.textBaseline = "middle";
+            sCtx.fillText("✨ Scratch Here ✨", scratchCanvas.width / 2, scratchCanvas.height / 2);
+        }
+
+        initScratchCard();
+
+        function getBrushPos(e) {
+            const rect = scratchCanvas.getBoundingClientRect();
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+            return {
+                x: (clientX - rect.left) / (rect.right - rect.left) * scratchCanvas.width,
+                y: (clientY - rect.top) / (rect.bottom - rect.top) * scratchCanvas.height
+            };
+        }
+
+        function scratch(e) {
+            const pos = getBrushPos(e);
+            sCtx.globalCompositeOperation = 'destination-out';
+            sCtx.beginPath();
+            sCtx.arc(pos.x, pos.y, 25, 0, 2 * Math.PI); // Large brush size
+            sCtx.fill();
+        }
+
+        // Mouse Events
+        scratchCanvas.addEventListener('mousedown', (e) => { isDrawing = true; scratch(e); });
+        scratchCanvas.addEventListener('mousemove', (e) => { if (isDrawing) scratch(e); });
+        scratchCanvas.addEventListener('mouseup', () => { isDrawing = false; });
+        scratchCanvas.addEventListener('mouseleave', () => { isDrawing = false; });
+
+        // Touch Events for Mobile
+        scratchCanvas.addEventListener('touchstart', (e) => { 
+            isDrawing = true; 
+            scratch(e); 
+            e.preventDefault(); 
+        }, {passive: false});
+        scratchCanvas.addEventListener('touchmove', (e) => { 
+            if (isDrawing) {
+                scratch(e);
+                e.preventDefault(); 
+            }
+        }, {passive: false});
+        scratchCanvas.addEventListener('touchend', () => { isDrawing = false; });
+
     </script>
 </body>
 </html>
+```
+
+Make sure the file `WhatsApp Image 2026-10-16 at 2.45.55 PM.jpeg` is in your repository! The code now pulls Uvan's face from the right side of the image and Monika's face from the left side of the image, presenting them in perfect glowing circles side-by-side above your animated names!
